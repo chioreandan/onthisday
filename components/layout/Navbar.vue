@@ -1,20 +1,18 @@
 <template>
   <div>
-    <navigation>
-      <nav class="text-center nav-wrapper">
-        <NuxtLink to="/">
-          Events
-        </NuxtLink>
-        /
-        <NuxtLink to="/births">
-          Births
-        </NuxtLink>
-        /
-        <NuxtLink to="/deaths">
-          Deaths
-        </NuxtLink>
-      </nav>
-    </navigation>
+    <nav class="text-center nav-wrapper">
+      <NuxtLink to="/">
+        Events
+      </NuxtLink>
+      /
+      <NuxtLink to="/births">
+        Births
+      </NuxtLink>
+      /
+      <NuxtLink to="/deaths">
+        Deaths
+      </NuxtLink>
+    </nav>
   </div>
 </template>
 

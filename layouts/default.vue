@@ -9,9 +9,7 @@
     <Nuxt />
   </div>
 </template>
-// TODO selectare numa la data fara an.
-// sa nu se coloreze si slashul cand selectezi events etc
-// pls 2 columns i prefer. may prefers 3.
+
 <script>
 import { mapActions } from 'vuex'
 import { Navbar } from '~/components/layout/Navbar'
