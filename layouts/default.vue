@@ -1,0 +1,129 @@
+<template>
+  <div class="mt-4">
+    <b-row class="justify-content-center">
+      <b-col lg="4" sm="12">
+        <b-form-datepicker v-model="selectedDate" class="mb-2" size="lg" @input="dateChanged()"/>
+      </b-col>
+    </b-row>
+    <navbar/>
+    <Nuxt />
+  </div>
+</template>
+// TODO selectare numa la data fara an.
+// sa nu se coloreze si slashul cand selectezi events etc
+// pls 2 columns i prefer. may prefers 3.
+<script>
+import { mapActions } from 'vuex'
+import { Navbar } from '~/components/layout/Navbar'
+
+export default {
+  data: () => ({
+    selectedDate: ''
+  }),
+
+  components: {
+    Navbar
+  },
+
+  methods: {
+    ...mapActions({
+      getEvents: 'events/getAllEvents',
+      getBirths: 'events/getAllBirths',
+      getDeaths: 'events/getAllDeaths',
+    }),
+
+    setTodayDate() {
+      this.selectedDate = new Date;
+    },
+
+    dateQuery() {
+      let date = new Date(this.selectedDate)
+      let selecteMounth = date.getMonth() + 1;
+      let selectedDay = date.getDate();
+
+      return `${selecteMounth}/${selectedDay}`
+    },
+
+    dateChanged() {
+      this.fetchEvents(this.dateQuery())
+    },
+
+    fetchEvents(date) {
+      this.getEvents(date);
+      this.getBirths(date);
+      this.getDeaths(date);
+    }
+  },
+
+  mounted() {
+    this.setTodayDate();
+    this.fetchEvents(this.dateQuery());
+  },
+
+  computed: {
+    todayDate() {
+      let date = new Date;
+
+      return date.toDateString();
+    }
+  }
+}
+
+</script>
+
+<style>
+html {
+  font-family:
+    'Source Sans Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.button--green {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #3b8070;
+  color: #3b8070;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+.button--green:hover {
+  color: #fff;
+  background-color: #3b8070;
+}
+
+.button--grey {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #35495e;
+  color: #35495e;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-left: 15px;
+}
+
+.button--grey:hover {
+  color: #fff;
+  background-color: #35495e;
+}
+</style>
