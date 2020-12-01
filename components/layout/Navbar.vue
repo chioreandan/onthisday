@@ -3,11 +3,13 @@
     <navigation>
       <nav class="text-center nav-wrapper">
         <NuxtLink to="/">
-          Events /
+          Events
         </NuxtLink>
+        /
         <NuxtLink to="/births">
-          Births /
+          Births
         </NuxtLink>
+        /
         <NuxtLink to="/deaths">
           Deaths
         </NuxtLink>
