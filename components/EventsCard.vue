@@ -1,6 +1,6 @@
 <template>
   <div class="card-columns px-1">
-    <b-card bg-variant="dark" text-variant="white" v-for="event in events" :key="event.description" class="mb-2">
+    <b-card bg-variant="dark" text-variant="white" v-for="event in events" :key="event.description" class="mb-2 border border-primary">
       <b-card-title>
         <h1> <strong> {{event.year}} </strong> </h1>
       </b-card-title>
@@ -28,7 +28,5 @@ export default {
 </script>
 
 <style>
-.card-text-wrapper {
-  /* width: 400px; */
-}
+
 </style>
